@@ -11,8 +11,8 @@ TO RUN THE LOCAL VERSION OF THE APP
 - upload a meta file that specifies the col_names and whether should they be Max/Min during optimisation sort 
   (optional - provide epsilon/precision) 
 - use the columns dropdown to select relevant columns for viewing, the highlighted rows will be the data points/observations that             
-  are *nondominated* or optimal in the n-dimensional space which corresponds to the number of cols in the metafile ( the app only 
-  calculates the non-dominated points using columns ie. objectives that are provided in the metafile).
+  are *nondominated* or optimal in the n-dimensional space which corresponds to the number of cols in the metafile 
+  ( the app only calculates the non-dominated points using columns ie. objectives that are provided in the metafile).
   
   
 - Then the user has a choice to plot the optimal points in a 2D-3D space, to spatially analyze the optimal points
