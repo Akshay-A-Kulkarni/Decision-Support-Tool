@@ -14,7 +14,9 @@ TO RUN THE LOCAL VERSION OF THE APP
   
   
 - Then the user has a choice to plot the optimal points in a 2D-3D space, to spatially analyze the optimal points
-- To do so, while the specific cols are selected navigate to the Plot section of the control panel, and select alteast 2 & upto 3 columns for plotting with an additional col to label the points in the plot and click plot.(Note: the representation recalculates the optimal points in 2 or 3D space only (wrt given plot columns) so the optimal points visually make sense 
+- To do so, while the specific cols are selected navigate to the Plot section of the control panel, and select alteast 2 & upto 3 columns for plotting with an additional col to label the points in the plot and click plot.
+
+(Note: the representation recalculates the optimal points in 2 or 3D space only (wrt given plot columns) so the optimal points visually make sense 
   
 
 
