@@ -19,14 +19,10 @@ def plot_nondominated_sets(df, mdf, x_axis=None, y_axis=None, z_axis=None, hover
     :param output: specifies the output of the fucntion [STRING]
     :return: Plotly Figure object [use plotly.offline.plot() ]
     """
-
     if output == 'table':
         objective_names = []
         max_col = []
         eps_vals = []
-
-        # df = df.dropna()
-
         for i in range(len(mdf)):
             row = mdf.iloc[i]
             default_epsilon = 1e-9
@@ -40,11 +36,9 @@ def plot_nondominated_sets(df, mdf, x_axis=None, y_axis=None, z_axis=None, hover
 
         objective_cols = [df.columns.get_loc(c) for c in objective_names if c in df]  # Converts col-names to col_ids
         max_col_ids = [df.columns.get_loc(c) for c in max_col if c in df]
-
         nondominated_set_multi = pareto.eps_sort([list(df.itertuples(False))],
                                                  objectives=objective_cols, maximize=max_col_ids, epsilons=eps_vals)
         nondominated_df_multi = pd.DataFrame(nondominated_set_multi)
-
         nondominated_df_multi.columns = df.columns
         return nondominated_df_multi
     else:
@@ -52,7 +46,6 @@ def plot_nondominated_sets(df, mdf, x_axis=None, y_axis=None, z_axis=None, hover
             plot_list = [x_axis, y_axis, z_axis]
         else:
             plot_list = [x_axis, y_axis]
-
         plot_mdf = mdf.loc[mdf['Col_Name'].isin(plot_list)]
         plot_col_ids = [df.columns.get_loc(c) for c in plot_list if c in df]
         plot_max_cols = [df.columns.get_loc(c) for c in plot_mdf.query('Max_Min == "Max"')['Col_Name'].values if c in df]
@@ -61,10 +54,8 @@ def plot_nondominated_sets(df, mdf, x_axis=None, y_axis=None, z_axis=None, hover
         nondominated_set = pareto.eps_sort([list(df.itertuples(False))],
                                            objectives=plot_col_ids,
                                            maximize=plot_max_cols, epsilons=col_eps)
-
         nondominated_df = pd.DataFrame(nondominated_set)
         nondominated_df.columns = df.columns
-
         full_df = pd.merge(df, nondominated_df['row_index'], how='left', indicator='Optimal', on='row_index')
         full_df.Optimal.replace(to_replace=dict(both="True", left_only="False"), inplace=True)
 
@@ -88,7 +79,6 @@ def plot_nondominated_sets(df, mdf, x_axis=None, y_axis=None, z_axis=None, hover
                 height=545,
                 margin=dict(r=0, b=0, l=0))
             return fig
-
         elif x_axis and y_axis:
             fig = px.scatter(full_df, x=x_axis, y=y_axis,
                              color='Optimal', hover_name=hoverlabel,
@@ -98,8 +88,6 @@ def plot_nondominated_sets(df, mdf, x_axis=None, y_axis=None, z_axis=None, hover
             fig.data[0].marker.size = 12
             fig.data[0].marker.line.width = 2
             fig.data[0].marker.line.color = "black"
-
-
             fig.update_layout(
                 height=545,
                 title=go.layout.Title(
@@ -126,13 +114,5 @@ def plot_nondominated_sets(df, mdf, x_axis=None, y_axis=None, z_axis=None, hover
                 )
             )
             return fig
-
         else:
             raise Exception('You must supply at least two axes')
-
-
-
-
-
-
-
