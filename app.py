@@ -174,9 +174,9 @@ info_modal = html.Div(
                autoFocus=True,
                children=[
                    html.Div([
-                           html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="100%") ])
-               ])
-     ])
+                           html.Img(src='data:image/png;base64,{}'.format(encoded_image.decode()), width="100%") ])])
+     ]
+)
 
 # Navbar config
 navbar = dbc.NavbarSimple(id='navbar',
@@ -196,7 +196,7 @@ navbar = dbc.NavbarSimple(id='navbar',
                           dark=True,
                           brand_style={
                               "font-size": "25px"}
-                          )
+)
 
 # The app is sectioned off in to two containers called "Cards"
 # these cards contain all elements that need to be rendered by Dash
