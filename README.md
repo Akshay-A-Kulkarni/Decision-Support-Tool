@@ -3,6 +3,11 @@
  objectives  
 - Deployed on https://decision-support-framework.herokuapp.com/
 
+![](https://github.com/Akshay-A-Kulkarni/akshay-a-kulkarni.github.io/blob/master/images/decision.png)
+
+
+
+
 TO RUN THE LOCAL VERSION OF THE APP
 
 - Install all the dependancies from requirements.txt
